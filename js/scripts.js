@@ -25,9 +25,14 @@ Player1.prototype.Roll = function () {
 
 Player1.prototype.Hold = function () {
   this.totalScore += this.runningTotal;
+  if (this.totalScore >= 100) {
+    alert("Player 1 Wins!");
+    location.reload();
+  } else {
   this.runningTotal = 0;
   player1Turn = false;
   player2Turn = true;
+  }
 }
 
 //Player2
@@ -50,11 +55,15 @@ Player2.prototype.Roll = function () {
 
 Player2.prototype.Hold = function () {
   this.totalScore += this.runningTotal;
+  if (this.totalScore >= 100) {
+    alert("Player 2 Wins!");
+    location.reload();
+  } else {
   this.runningTotal = 0;
   player1Turn = true;
   player2Turn = false;
+  }
 }
-
 //UI Logic
 
 $(document).ready(function() {
@@ -104,25 +113,10 @@ $(document).ready(function() {
           alert("Player 1 Turn, you cheater");
         } else {
           newPlayer2.Hold();
+          $("#player2-current-roll").text("");
+          $("#player2-running-total").text("");
           $("#player2-score").text(newPlayer2.totalScore);
         }
       });
 
   });
-
-
-
-//old logic
-   // function roll() {
-   //  return Math.floor(Math.random()*6) + 1;
-   // }
-
-  // $(function() {
-  //
-  //   $("#player1-roll").click(function() {
-  //       event.preventDefault();
-  //       var result = roll();
-  //       $("#player1-score").text(result);
-  //     });
-  //
-  //   });
