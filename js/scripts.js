@@ -68,9 +68,15 @@ Player2.prototype.Hold = function () {
 
 $(document).ready(function() {
   var newPlayer1 = new Player1();
+  //$("#player2-roll").hide();
+  //$("#player2-hold").hide();
   $("#player1-roll").click(function() {
       event.preventDefault();
       if (player1Turn === false) {
+        //$("#player1-roll").hide();
+        //$("#player1-hold").hide();
+        //$("#player2-roll").show();
+        //$("#player2-hold").show();
         alert("Player 2 Turn");
       } else {
         newPlayer1.Roll();
